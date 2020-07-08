@@ -1,6 +1,8 @@
 <?php
 require_once 'Usuario.php';
+require_once 'Contato.php';
 $usuario = new \Alura\Usuario($_POST['nome']);
+$contato = new \Alura\Contato($_POST['email']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,7 +22,7 @@ $usuario = new \Alura\Usuario($_POST['nome']);
 <ul class="list-group">
     <li class="list-group-item">Primeiro nome: <?= $usuario->getNome(); ?> </li>
     <li class="list-group-item">Sobrenome: <?= $usuario->getSobrenome(); ?> </li>
-    <li class="list-group-item">Usuário: </li>
+    <li class="list-group-item">Usuário: <?= $contato->getUsuario(); ?> </li>
     <li class="list-group-item">Senha: </li>
     <li class="list-group-item">Telefone: </li>
     <li class="list-group-item">Email: </li>
