@@ -5,9 +5,10 @@ namespace Alura;
 class Usuario{
     private $nome;
     private $sobrenome;
+    private $senha;
 
-    public function __construct(string $nome){
-        $nomeSobrenome = explode(" ", $_POST['nome'], 2);
+    public function __construct(string $nome, string $senha){
+        $nomeSobrenome = explode(" ", $nome, 2);
 
         if($nomeSobrenome[0] === ""){
             $this->nome = "Nome Inválido";
@@ -21,6 +22,8 @@ class Usuario{
             $this->sobrenome = $nomeSobrenome[1];
         }
 
+        $this->validaSenha($senha);
+
     }
 
 
@@ -30,6 +33,19 @@ class Usuario{
 
     public function getSobrenome():string{
         return $this->sobrenome;
+    }
+
+    private function validaSenha(string $senha):void{
+        $numeroCaractere = strlen(trim($senha));
+        if ($numeroCaractere >= 6){
+            $this->senha = $senha;
+        }else{
+            $this->senha = "Senha Invalida";
+        }
+    }
+
+    public function getSenha(): string{
+        return $this->senha;
     }
 
 
