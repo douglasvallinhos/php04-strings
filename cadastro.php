@@ -1,7 +1,7 @@
 <?php
 require_once 'autoload.php';
 $usuario = new \Alura\Usuario($_POST['nome'], $_POST['senha']);
-$contato = new \Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['cep']);
+$contato = new \Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['cep'], $_POST['telefone']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +23,7 @@ $contato = new \Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['cep']
     <li class="list-group-item">Sobrenome: <?= $usuario->getSobrenome(); ?> </li>
     <li class="list-group-item">Usuário: <?= $contato->getUsuario(); ?> </li>
     <li class="list-group-item">Senha: <?= $usuario->getSenha(); ?> </li>
-    <li class="list-group-item">Telefone: </li>
+    <li class="list-group-item">Telefone: <?= $contato->getTelefone(); ?> </li>
     <li class="list-group-item">Email: <?= $contato->getEmail(); ?> </li>
     <li class="list-group-item">Endereço: <?= $contato->getEndereco() . " - CEP: " . $contato->getCep(); ?> </li>
 </ul>

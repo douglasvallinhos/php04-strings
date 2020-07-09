@@ -6,8 +6,9 @@ class Contato{
     private $email;
     private $endereco;
     private $cep;
+    private $telefone;
 
-    public function __construct(string $email, string $endereco, string $cep){
+    public function __construct(string $email, string $endereco, string $cep, string $telefone){
 
         if ($this->validaEmail($email)){
             $this->email = $email;
@@ -16,6 +17,13 @@ class Contato{
         }
         $this->endereco = $endereco;
         $this->cep = $cep;
+
+        if($this->validaTelefone($telefone)){
+            $this->telefone = $telefone;
+        }else{
+            $this->telefone = "Telefone invalido";
+        }
+
     }
 
     public function getUsuario(): string {
@@ -29,6 +37,9 @@ class Contato{
     private function validaEmail(string $email){
         return filter_var($email,FILTER_VALIDATE_EMAIL);
     }
+    private function validaTelefone(string $telefone): int{
+        return preg_match('/^[0-9]{4}-[0-9]{4}$/',$telefone,$saidaEncontrados);
+    }
 
     public function  getEmail(): string{
         return $this->email;
@@ -40,5 +51,8 @@ class Contato{
 
     public function  getCep(): string {
         return $this->cep;
+    }
+    public function getTelefone(): string{
+        return $this->telefone;
     }
 }
