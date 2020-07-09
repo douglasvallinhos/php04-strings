@@ -6,8 +6,9 @@ class Usuario{
     private $nome;
     private $sobrenome;
     private $senha;
+    private $genero;
 
-    public function __construct(string $nome, string $senha){
+    public function __construct(string $nome, string $senha, string $genero){
         $nomeSobrenome = explode(" ", $nome, 2);
 
         if($nomeSobrenome[0] === ""){
@@ -24,6 +25,20 @@ class Usuario{
 
         $this->validaSenha($senha);
 
+        $this->tratamentoGenero($nome, $genero);
+
+    }
+
+    private function tratamentoGenero(string $nome, string $genero){
+        if($genero === 'M'){
+            $this->genero = preg_replace('/^(\w+)\b/','Senhor ', $nome, 1);
+        }elseif($genero === 'F'){
+            $this->genero =  preg_replace('/^(\w+)\b/','Senhora ', $nome, 1);
+
+        }
+    }
+    public function getGenero(): string{
+        return $this->genero;
     }
 
 
