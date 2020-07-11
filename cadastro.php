@@ -17,7 +17,7 @@ $contato = new \Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['cep']
 
 <div class="mx-5 my-5">
 <h1>Cadastro feito com sucesso.</h1>
-<p> <?= $usuario->getGenero() ?>, seguem os dados de sua conta:</p>
+    <p><b> <?= $usuario->getGenero() ?>, seguem os dados de sua conta:</b></p>
 <ul class="list-group">
     <li class="list-group-item">Primeiro nome: <?= htmlspecialchars($usuario->getNome()); ?> </li>
     <li class="list-group-item">Sobrenome: <?= htmlspecialchars($usuario->getSobrenome()); ?> </li>
